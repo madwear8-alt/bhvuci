@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX Design Expert - 12 Years Experience</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+        import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+
+        // Your Firebase config (replace with your project's config)
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const rtdb = getDatabase(app);
+        const provider = new GoogleAuthProvider();
+
+        window.firebaseAuth = auth;
+        window.firebaseDb = db;
+        window.firebaseRtdb = rtdb;
+        window.provider = provider;
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Your Name</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button id="auth-button">Sign Up/Login</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Expert UI/UX Design</h1>
+            <p>12 Years of Crafting Intuitive, iOS-Inspired Experiences</p>
+            <button class="cta-button">Hire Me for Your Website</button>
+        </div>
+        <div class="hero-image">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" alt="UI/UX Design Mockup" />
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>With over 12 years in UI/UX design, I specialize in creating seamless, user-friendly interfaces that feel as smooth as iOS. From mobile apps to websites, I deliver designs that convert visitors into customers.</p>
+        <div class="stats">
+            <div class="stat">12+ Years Experience</div>
+            <div class="stat">500+ Projects Completed</div>
+            <div class="stat">100% Client Satisfaction</div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2>Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="project">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" alt="Project 1" />
+                <h3>E-Commerce Site</h3>
+                <p>iOS-style UI for a retail platform.</p>
+            </div>
+            <div class="project">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" alt="Project 2" />
+                <h3>Mobile App</h3>
+                <p>Intuitive UX for a fitness app.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get in Touch</h2>
+        <form id="contact-form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Tell me about your project"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <section id="dashboard" style="display: none;">
+        <h2>Owner Dashboard</h2>
+        <div id="requests-list"></div>
+        <div id="chat-box">
+            <div id="chat-messages"></div>
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="send-chat">Send</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Your Name. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
